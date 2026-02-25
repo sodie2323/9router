@@ -6,6 +6,7 @@ function normalizeString(value) {
 export function applyOutboundProxyEnv(
   { outboundProxyEnabled, outboundProxyUrl, outboundNoProxy } = {}
 ) {
+  if (typeof process === "undefined" || !process.env) return;
   const enabled = Boolean(outboundProxyEnabled);
   const proxyUrl = normalizeString(outboundProxyUrl);
   const noProxy = normalizeString(outboundNoProxy);
